@@ -63,7 +63,7 @@ export default {
           requestLogin(loginParams).then(data => {
             this.logining = false;
             let { msg, code, token } = data;
-            if (code == 200) {
+            if (code === 200) {
               //登录成功，把用户信息保存在sessionStorage中
               sessionStorage.setItem("access-token", token);
               //跳转到后台主界面
