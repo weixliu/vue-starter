@@ -33,6 +33,7 @@ router.beforeEach((to, from, next) => {
     next();
   } else {
     let token = window.sessionStorage.getItem("access-token");
+    console.log(token);
     if (!token) {
       next({ path: "/login" });
     } else {

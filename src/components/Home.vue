@@ -8,14 +8,12 @@
             <div>内容</div>
           </el-col>
           <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
-            <div>
-              <el-input
-                type="textarea"
-                :autosize="{ minRows: 1, maxRows: 10}"
-                placeholder="请输入内容"
-                v-model="progress"
-              ></el-input>
-            </div>
+            <el-input
+              type="textarea"
+              :autosize="{ minRows: 1, maxRows: 10}"
+              placeholder="请输入内容"
+              v-model="progress"
+            ></el-input>
           </el-col>
         </el-row>
         <el-row>
@@ -24,25 +22,17 @@
           </el-col>
           <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
             <el-date-picker
-              v-model="daterange"
+              v-model="datePair"
               type="daterange"
-              align="right"
-              unlink-panels
               range-separator="至"
               start-placeholder="开始日期"
               end-placeholder="结束日期"
-              :picker-options="pickerOptions"
               style="width:100%"
             ></el-date-picker>
           </el-col>
         </el-row>
 
-        <el-button
-          type="primary"
-          style="width:100%;"
-          @click.native.prevent="handleLogin"
-          :loading="logining"
-        >保存</el-button>
+        <el-button type="primary" style="width:100%;">保存</el-button>
       </el-tab-pane>
       <el-tab-pane label="查询周报" name="second">
         <h3>查询周报</h3>
@@ -58,7 +48,7 @@ export default {
       tabPosition: "left",
 
       progress: "",
-      daterange: ""
+      datePair: ""
     };
   },
   methods: {
