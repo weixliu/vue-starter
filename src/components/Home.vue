@@ -2,7 +2,7 @@
   <div class="home-container">
     <el-tabs :tab-position="tabPosition" v-model="activeName" @tab-click="handleClick">
       <el-tab-pane label="创建周报" name="first">
-        <h3>用户管理</h3>
+        <h3>周报</h3>
         <el-row>
           <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
             <div>内容</div>
@@ -32,10 +32,37 @@
           </el-col>
         </el-row>
 
-        <el-button type="primary" style="width:100%;">保存</el-button>
+        <el-button type="primary" style="width:100%;">创建周报</el-button>
       </el-tab-pane>
       <el-tab-pane label="查询周报" name="second">
         <h3>查询周报</h3>
+        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
+          <div>查询用户</div>
+        </el-col>
+        <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
+          <el-select v-model="username" placeholder="选择用户" style="width: 100%;">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-col>
+
+        <el-table :data="tableData" border style="width: 100%;" max-height="300">
+          <el-table-column prop="datePair" label="起始日期"></el-table-column>
+          <el-table-column prop="name" label="用户名"></el-table-column>
+          <el-table-column prop="content" label="周报内容"></el-table-column>
+          <el-table-column fixed="right" label="操作">
+            <template slot-scope="scope">
+              <el-button @click="update(scope.row)" type="text" size="small">编辑</el-button>
+              <el-button type="text" size="small">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+
+        <el-button type="primary" style="width:100%;">导出表格</el-button>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -48,12 +75,54 @@ export default {
       tabPosition: "left",
 
       progress: "",
-      datePair: ""
+      datePair: "",
+
+      tableData: [
+        {
+          datePair: "2016/05/03-2016/05/10",
+          name: "王小虎",
+          content: "划水"
+        },
+        {
+          datePair: "2016/05/03-2016/05/10",
+          name: "王小虎",
+          content: "划水"
+        },
+        {
+          datePair: "2016/05/03-2016/05/10",
+          name: "王小虎",
+          content: "划水"
+        },
+        {
+          datePair: "2016/05/03-2016/05/10",
+          name: "王小虎",
+          content: "划水"
+        },
+        {
+          datePair: "2016/05/03-2016/05/10",
+          name: "王小虎",
+          content: "划水"
+        },
+        {
+          datePair: "2016/05/03-2016/05/10",
+          name: "王小虎",
+          content: "划水"
+        },
+        {
+          datePair: "2016/05/03-2016/05/10",
+          name: "王小虎",
+          content: "划水"
+        }
+      ]
     };
   },
   methods: {
     handleClick(tab, event) {
       console.log(tab, event);
+    },
+
+    update(row) {
+      console.log(row);
     }
   }
 };
